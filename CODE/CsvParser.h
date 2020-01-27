@@ -33,6 +33,11 @@ class CsvParser
 		int currentPosition() const {return m_currentPos;};
 		bool hasError() const {return m_lastError != CsvError::NoError;}; // returns true if an error occurred
 		CsvError lastError() const {return m_lastError;};
+		std::string errorMessage() const
+		{
+			if (!this->hasError()) {return {};}
+			return errorToString(m_lastError) + " (line " + std::to_string(m_currentLine) + ", column " + std::to_string(m_currentPos) + ")";
+		};
 		
 		void reset()
 		{

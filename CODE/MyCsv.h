@@ -34,13 +34,13 @@ MyCsvData readCsvFile(const QString &csvFilePath, QChar sep, QString *errorMessa
 		parser.consume(c);
 		if (parser.hasError())
 		{
-			if (errorMessage) {*errorMessage = QString::fromStdString(errorToString(parser.lastError()));}
+			if (errorMessage) {*errorMessage = QString::fromStdString(parser.errorMessage());}
 			return data;
 		}
 	}
 	
 	// the end
-	if (parser.hasError() && errorMessage) {*errorMessage = QString::fromStdString(errorToString(parser.lastError()));}
+	if (parser.hasError() && errorMessage) {*errorMessage = QString::fromStdString(parser.errorMessage());}
 	return data;
 }
 
