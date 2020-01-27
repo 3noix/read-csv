@@ -3,7 +3,7 @@
 
 
 #include "CsvParser.h"
-#include "CsvDataWriter.h"
+#include "CsvDataBuilder.h"
 #include "CsvData.h"
 #include "MyCsvTraits.h"
 
@@ -29,7 +29,7 @@ MyCsvData readCsvFile(const QString &csvFilePath, QChar sep, QString *errorMessa
 	Csv::CsvQtTraits::separator = sep;
 	Csv::CsvParser<Csv::CsvQtTraits> parser;
 	Csv::CsvData<Csv::CsvQtTraits> data;
-	Csv::CsvDataWriter<Csv::CsvQtTraits> dataWriter{data,parser,false};
+	Csv::CsvDataBuilder<Csv::CsvQtTraits> dataWriter{data,parser,false};
 	for (QChar c : rawData)
 	{
 		parser.consume(c);

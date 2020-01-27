@@ -11,13 +11,13 @@ namespace Csv
 {
 
 template <typename CsvTraits>
-class CsvDataWriter
+class CsvDataBuilder
 {
 	public:
 		using StringType = typename CsvTraits::StringType;
 		
 		
-		CsvDataWriter(CsvData<CsvTraits> &data, CsvParser<CsvTraits> &parser, bool hasHeaderLine) :
+		CsvDataBuilder(CsvData<CsvTraits> &data, CsvParser<CsvTraits> &parser, bool hasHeaderLine) :
 			m_data{data},
 			m_hasHeaders{hasHeaderLine},
 			m_atBeginningOfLine{true},

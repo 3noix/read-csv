@@ -10,7 +10,7 @@ namespace Csv
 {
 
 template <typename CsvTraits>
-class CsvDataWriter;
+class CsvDataBuilder;
 
 template <typename CsvTraits>
 class CsvData;
@@ -57,7 +57,7 @@ class CsvData
 		
 		
 	private:
-		friend class CsvDataWriter<CsvTraits>;
+		friend class CsvDataBuilder<CsvTraits>;
 		
 		void newRecord() {m_records.emplace_back(*this);};
 		void addField(const StringType& field) {m_records.back().addField(field);};
