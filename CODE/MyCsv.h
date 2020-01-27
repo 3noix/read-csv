@@ -21,7 +21,6 @@ MyCsvData readCsvFile(const QString &csvFilePath, QChar sep, QString *errorMessa
 		return {};
 	}
 	QString rawData = csvFile.readAll();
-	rawData.remove('\r');
 	csvFile.close();
 	
 	

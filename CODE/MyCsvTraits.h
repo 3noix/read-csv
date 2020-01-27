@@ -12,12 +12,13 @@ class CsvGenericTraits
 		using StringType = StringType_;
 		using CharType = CharType_;
 		
-		static void append(StringType& ref, CharType val) {ref.push_back(val);}
-		static void truncate(StringType& ref) {ref.clear();}
-		static bool isSeparator(CharType c) {return c == CharType{','};}
-		static bool isNewLine(CharType c) {return (c == CharType{'\n'} || c == CharType{'\r'});}
-		static bool isDoubleQuote(CharType c) {return c == CharType{'"'};}
-		static bool isStartComment(CharType c) {return c == CharType{'#'};}
+		static void append(StringType& ref, CharType val) {ref.push_back(val);};
+		static void truncate(StringType& ref) {ref.clear();};
+		static bool isIgnored(CharType c) {return c == CharType{'\r'};};
+		static bool isSeparator(CharType c) {return c == CharType{','};};
+		static bool isNewLine(CharType c) {return c == CharType{'\n'};};
+		static bool isDoubleQuote(CharType c) {return c == CharType{'"'};};
+		static bool isStartComment(CharType c) {return c == CharType{'#'};};
 };
 
 
@@ -28,12 +29,13 @@ class CsvQtTraits
 		using StringType = QString;
 		using CharType = QChar;
 		
-		static void append(StringType& ref, CharType val) {ref.push_back(val);}
-		static void truncate(StringType& ref) {ref.clear();}
-		static bool isSeparator(CharType c) {return c == separator;}
-		static bool isNewLine(CharType c) {return (c == CharType{'\n'} || c == CharType{'\r'});}
-		static bool isDoubleQuote(CharType c) {return c == CharType{'"'};}
-		static bool isStartComment(CharType c) {return c == CharType{'#'};}
+		static void append(StringType& ref, CharType val) {ref.push_back(val);};
+		static void truncate(StringType& ref) {ref.clear();};
+		static bool isIgnored(CharType c) {return c == CharType{'\r'};};
+		static bool isSeparator(CharType c) {return c == separator;};
+		static bool isNewLine(CharType c) {return c == CharType{'\n'};};
+		static bool isDoubleQuote(CharType c) {return c == CharType{'"'};};
+		static bool isStartComment(CharType c) {return c == CharType{'#'};};
 		
 		static CharType separator;
 };
@@ -47,16 +49,19 @@ class CsvStlTraits
 		using StringType = std::string;
 		using CharType = char;
 		
-		static void append(StringType& ref, CharType val) {ref.push_back(val);}
-		static void truncate(StringType& ref) {ref.clear();}
-		static bool isSeparator(CharType c) {return c == separator;}
-		static bool isNewLine(CharType c) {return (c == CharType{'\n'} || c == CharType{'\r'});}
-		static bool isDoubleQuote(CharType c) {return c == CharType{'"'};}
-		static bool isStartComment(CharType c) {return c == CharType{'#'};}
+		static void append(StringType& ref, CharType val) {ref.push_back(val);};
+		static void truncate(StringType& ref) {ref.clear();};
+		static bool isIgnored(CharType c) {return c == CharType{'\r'};};
+		static bool isSeparator(CharType c) {return c == separator;};
+		static bool isNewLine(CharType c) {return c == CharType{'\n'};};
+		static bool isDoubleQuote(CharType c) {return c == CharType{'"'};};
+		static bool isStartComment(CharType c) {return c == CharType{'#'};};
 		
 		static CharType separator;
 };
 CsvStlTraits::CharType CsvStlTraits::separator = ',';
 
 }
+
 #endif
+

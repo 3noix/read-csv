@@ -145,6 +145,7 @@ template <typename CsvTraits>
 void CsvParser<CsvTraits>::consume(typename CsvTraits::CharType c)
 {
 	++m_currentPos;
+	if (CsvTraits::isIgnored(c)) {return;}
 	
 	if (m_state == State::Initial || m_state == State::NewLine)
 	{
