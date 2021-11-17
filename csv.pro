@@ -15,5 +15,5 @@ MOC_DIR = $$MODE/moc
 QT = core
 			
 			
-SOURCES +=  CODE/main.cpp
+SOURCES +=  src/main.cpp
 
